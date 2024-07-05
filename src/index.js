@@ -3,13 +3,15 @@
 import { DB_NAME } from "./constants.js";
 import express from "express"
 import { connectDB } from "./db/index.js";
-const app = express()
+import { app } from "./app.js";
+
+
 import dotenv from 'dotenv'
 dotenv.config({path:'./env'})
 connectDB()
 .then(()=>{
-    app.listen(process.env.PORT || 8000, ()=>{
-        console.log(`server listin on ${process.env.PORT}`)
+    app.listen(process.env.PORT || 3000, ()=>{
+        console.log(`server listen on ${process.env.PORT}`)
      app.on('error', (error)=>{
         console.log("error:" ,error)
         throw error
